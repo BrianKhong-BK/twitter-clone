@@ -1,30 +1,26 @@
-import { Button, Col, Image, Nav, Row } from "react-bootstrap";
+import { Button, Col, Image, Nav, Row, Spinner } from "react-bootstrap";
 import ProfilePostCard from "./ProfilePostCard";
 import { jwtDecode } from "jwt-decode";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPostsByUser } from "../features/posts/postsSlice";
 
 export default function ProfileMidBody() {
-  const [posts, setPosts] = useState([]);
   const url = "src/images/cover.jpg";
   const pic = "src/images/profile.jpg";
 
-  const fetchPosts = (userId) => {
-    fetch(
-      `https://42749a8f-e10c-423c-9cdb-e653463b4d34-00-2pp8ywtam1456.pike.replit.dev/posts/user/${userId}`
-    )
-      .then((response) => response.json())
-      .then((data) => setPosts(data))
-      .catch((error) => console.error("Error: ", error));
-  };
+  const dispatch = useDispatch();
+  const posts = useSelector((store) => store.posts.posts);
+  const loading = useSelector((store) => store.posts.loading);
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     if (token) {
       const decodedToken = jwtDecode(token);
       const userId = decodedToken.id;
-      fetchPosts(userId);
+      dispatch(fetchPostsByUser(userId));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <Col sm={6} className="bg-light" style={{ border: "1px solid lightgrey" }}>
@@ -83,9 +79,16 @@ export default function ProfileMidBody() {
           <Nav.Link eventKey="link-4">Likes</Nav.Link>
         </Nav.Item>
       </Nav>
+      {loading && (
+        <Spinner animation="border" className="ms-3 mt-3" variant="primary" />
+      )}
       {posts.length > 0 ? (
         posts.map((post) => (
-          <ProfilePostCard key={post.id} content={post.content} id={post.id} />
+          <ProfilePostCard
+            key={post.id}
+            content={post.content}
+            postId={post.id}
+          />
         ))
       ) : (
         <p>No posts yet</p>
