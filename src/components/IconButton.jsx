@@ -9,12 +9,12 @@ export default function IconButton({ isTop, className, onClick, text }) {
     margin = "light rounded-pill";
   }
 
-  const iconMargin = text ? "me-3" : " ";
+  let iconMargin = text ? "me-3" : "";
 
   return (
     <Button variant={margin} onClick={onClick}>
       <i
-        className={className + iconMargin}
+        className={className + " " + iconMargin}
         style={{ fontSize: "24px", color: isTop ? "dodgerBlue" : "black" }}
       />
       {text}
