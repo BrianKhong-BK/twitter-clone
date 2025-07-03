@@ -6,8 +6,10 @@ import { AuthContext } from "./AuthProvider";
 import { fetchPostsByUser } from "../features/posts/postsSlice";
 
 export default function ProfileMidBody() {
-  const url = "src/images/cover.jpg";
-  const pic = "src/images/profile.jpg";
+  const url =
+    "https://firebasestorage.googleapis.com/v0/b/twitter-app-9bbb5.firebasestorage.app/o/cover.jpg?alt=media&token=6df34ac8-eb3e-4352-8b41-a22bf73b4510 ";
+  const pic =
+    "https://firebasestorage.googleapis.com/v0/b/twitter-app-9bbb5.firebasestorage.app/o/profile.jpg?alt=media&token=60bdc024-d27e-4cd2-af1b-cb117fbffa8e";
 
   const dispatch = useDispatch();
   const posts = useSelector((store) => store.posts.posts);
