@@ -13,7 +13,8 @@ export default function ProfilePostCard({ post }) {
   const userId = currentUser?.uid;
   const isLiked = likes.includes(userId);
 
-  const pic = "src/images/profile.jpg";
+  const pic =
+    "https://firebasestorage.googleapis.com/v0/b/twitter-app-9bbb5.firebasestorage.app/o/profile.jpg?alt=media&token=60bdc024-d27e-4cd2-af1b-cb117fbffa8e";
 
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 

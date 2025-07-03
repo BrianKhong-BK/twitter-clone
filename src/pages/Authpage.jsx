@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthProvider";
 
 export default function Authpage() {
-  const loginImage = "src/images/home.png";
-  //const loginImage = "https://sig1.co/img-twitter-1";
+  const loginImage = "https://sig1.co/img-twitter-1";
   const [modalShow, setModalShow] = useState(null);
   const handleShowSignup = () => setModalShow("SignUp");
   const handleShowLogin = () => setModalShow("Login");
