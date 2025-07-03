@@ -1,7 +1,9 @@
 import {
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signInWithPopup,
 } from "firebase/auth";
 import { Col, Row, Image, Button, Modal, Form } from "react-bootstrap";
 import { useState, useEffect, useContext } from "react";
@@ -48,6 +50,16 @@ export default function Authpage() {
     }
   };
 
+  const provider = new GoogleAuthProvider();
+  const handleGoogleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleClose = () => setModalShow(null);
 
   return (
@@ -67,7 +79,11 @@ export default function Authpage() {
           Join Twitter today.
         </h2>
         <Col sm={5} className="d-grid gap-2">
-          <Button className="rounded-pill" variant="outline-dark">
+          <Button
+            className="rounded-pill"
+            variant="outline-dark"
+            onClick={handleGoogleLogin}
+          >
             <i className="bi bi-google me-2" />
             Sign up with Google
           </Button>
