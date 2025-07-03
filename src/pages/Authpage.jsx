@@ -76,6 +76,10 @@ export default function Authpage() {
             <i className="bi bi-apple me-2" />
             Sign up with Apple
           </Button>
+          <Button className="rounded-pill" variant="outline-dark">
+            <i className="bi bi-facebook me-2" />
+            Sign up with Facebook
+          </Button>
           <p style={{ textAlign: "center" }}>or</p>
           <Button className="rounded-pill" onClick={handleShowSignup}>
             Create account

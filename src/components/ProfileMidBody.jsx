@@ -15,7 +15,7 @@ export default function ProfileMidBody() {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    dispatch(fetchPostsByUser(currentUser.uid));
+    dispatch(fetchPostsByUser(currentUser?.uid));
   }, [dispatch, currentUser]);
 
   // useEffect(() => {

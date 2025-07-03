@@ -9,7 +9,7 @@ export default function NewPostModal({ show, handleClose }) {
   const [file, setFile] = useState(null);
   const dispatch = useDispatch();
   const { currentUser } = useContext(AuthContext);
-  const userId = currentUser.uid;
+  const userId = currentUser?.uid;
 
   const handleSave = () => {
     dispatch(savePost({ userId, postContent, file }));

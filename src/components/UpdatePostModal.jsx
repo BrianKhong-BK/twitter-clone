@@ -14,7 +14,7 @@ export default function UpdatePostModal({
   const [newFile, setNewFile] = useState(null);
   const dispatch = useDispatch();
   const { currentUser } = useContext(AuthContext);
-  const userId = currentUser.uid;
+  const userId = currentUser?.uid;
 
   const handleNewFileChange = (event) => {
     setNewFile(event.target.files[0]);

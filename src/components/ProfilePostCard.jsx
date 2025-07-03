@@ -10,7 +10,7 @@ export default function ProfilePostCard({ post }) {
   const [likes, setLikes] = useState(post.likes || []);
   const dispatch = useDispatch();
   const { currentUser } = useContext(AuthContext);
-  const userId = currentUser.uid;
+  const userId = currentUser?.uid;
   const isLiked = likes.includes(userId);
 
   const pic = "src/images/profile.jpg";
